@@ -169,12 +169,13 @@ import csv
 from django.core.management.base import BaseCommand
 from movie.models import Movie
 
+
 class Command(BaseCommand):
     help = "Update movie descriptions in the database from a CSV file"
 
     def handle(self, *args, **kwargs):
         # 📥 Ruta del archivo CSV con las descripciones actualizadas
-        csv_file = 'updated_movie_descriptions.csv'  # ← Puedes cambiar el nombre si es necesario
+        csv_file = 'DjangoProjectBase/updated_movie_descriptions.csv'  # ← Puedes cambiar el nombre si es necesario
 
         # ✅ Verifica si el archivo existe
         if not os.path.exists(csv_file):
