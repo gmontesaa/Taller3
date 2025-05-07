@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Recomendación de Películas</h2>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="prompt" placeholder="Ejemplo:Película de la Segunda Guerra Mundial">
+        <button type="submit">Buscar</button>
+    </form>
+
+    {% if recommendation %}
+        <h3>{{ recommendation.title }}</h3>
+        <img src="{{ recommendation.image.url }}" alt="{{ recommendation.title }}" style="width:200px;">
+        <p>{{ recommendation.description }}</p>
+    {% endif %}
+{% endblock %}

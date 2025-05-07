@@ -17,17 +17,23 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from movie import views as movieViews
+from movie.views import movie_recommendation
+
 
 from django.conf.urls.static import static
 from django.conf import settings
 
+from movie.views import home, about, statistics_view, signup, movie_recommendation
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', movieViews.home, name='home'),
-    path('about/', movieViews.about, name='about'),
+    path('', home, name='home'),
+    path('about/', about, name='about'),
     path('news/', include('news.urls')),
-    path('statistics/', movieViews.statistics_view, name='statistics'),
-    path('signup/', movieViews.signup, name='signup'),
+    path('statistics/', statistics_view, name='statistics'),
+    path('signup/', signup, name='signup'),
+    path('recommend/', movie_recommendation, name='movie_recommendation'),
 ]
+
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
